@@ -1,6 +1,0 @@
-For the two assignments due on Sunday, maybe one of the assignments should be similar
-to the example at this website.  This can be set up using excel.
-
-https://www.smartsheet.com/c/online-gantt-chart?s=153&c=203&m=414&a=25451330587&k=&plc=www.project-documents.com&mtp=&mkwid=c0NPXNTmL|dc&net=d&&plc=www.project-documents.com&devm=&adp=none&gclid=CNfEqO-uyLkCFWpk7AodKnQAnQ
-
-There are different template examples at other sites, I searched on 'Requirements Register template'.
