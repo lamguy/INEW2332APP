@@ -1,25 +1,20 @@
-/* Create the Reference tables. */
 CREATE TABLE ref_device_status (
   id INT NOT NULL,
   device_status_description VARCHAR(50) NOT NULL,
-  create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id));
 
 CREATE TABLE ref_device_type (
   id INT NOT NULL,
   device_type_description VARCHAR(50) NOT NULL,
-  create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id));
 
 CREATE TABLE ref_os_system (
   id INT NOT NULL,
   os_system_description VARCHAR(50) NOT NULL,
-  create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id));
 
 
 
-/* Insert data to the Reference tables. */
 INSERT INTO ref_device_status VALUES (1, "Active");
 INSERT INTO ref_device_status VALUES (2, "Deactive");
 INSERT INTO ref_device_status VALUES (3, "Revoke");
