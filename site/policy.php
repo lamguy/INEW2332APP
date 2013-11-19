@@ -3,6 +3,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h1>Policy</h1>
+		  <br>
 		  <h2>Employee Fair and Responsible User Policies at Circle Square</h2>
 		  <br>
 		  <h3>Purpose:</h3>
