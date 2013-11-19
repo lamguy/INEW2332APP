@@ -5,7 +5,7 @@
           <h1>Policy</h1>
 		  <h2>Employee Fair and Responsible User Policies at Circle Square</h2>
 		  <br>
-		  <h2>Purpose:</h2>
+		  <h3>Purpose:</h3>
 		     <p class="c0">
       <span class="c3">
         &nbsp;
