@@ -83,21 +83,17 @@
         &nbsp;
       </span>
     </p>
-    <p class="c0">
-      <span class="c2">
-        Policy:
-      </span>
-    </p>
+
+        <h2>Policy:</h2>
+
     <p class="c0">
       <span class="c3">
         &nbsp;
       </span>
     </p>
-    <p class="c0">
-      <span class="c2">
-        Proper Use of Technology
-      </span>
-    </p>
+    
+        <h3>Proper Use of Technology</h3>
+     
     <p class="c0">
       <span class="c3">
         &nbsp;
@@ -124,11 +120,9 @@
       <span class="c4">
       </span>
     </p>
-    <p class="c0">
-      <span class="c2">
-        Privacy and Monitoring/Search
-      </span>
-    </p>
+    
+        <h3>Privacy and Monitoring/Search</h3>
+    
     <p class="c0">
       <span class="c3">
         &nbsp;
@@ -144,11 +138,9 @@
         &nbsp;
       </span>
     </p>
-    <p class="c0">
-      <span class="c2">
-        Acceptable Usage
-      </span>
-    </p>
+    
+        <h3>Acceptable Usage</h3>
+      
     <p class="c0">
       <span class="c3">
         &nbsp;
@@ -203,11 +195,9 @@
         Confidential Information: Carefully consider the confidentiality and sensitivity of any material stored or transmitted using Circle Square IT, e-communications or Circle Square social media. Portable data storage devices such as jump drives or portable hard drives should not be used to store or transport Circle Square confidential information without the express consent of the appropriate manager.
       </span>
     </p>
-    <p class="c0">
-      <span class="c2">
-        User Accountability
-      </span>
-    </p>
+    
+        <h3>User Accountability</h3>
+      
     <p class="c0">
       <span class="c4">
         &nbsp;
