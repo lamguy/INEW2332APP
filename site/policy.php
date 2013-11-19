@@ -2,7 +2,9 @@
 
       <div class="row">
         <div class="col-lg-12">
-          <h1>Employee Fair and Responsible User Policies at Circle Square</h1>
+          <h1>Policy</h1>
+		  <h2>Employee Fair and Responsible User Policies at Circle Square</h2>
+		  <br>
 		  <h2>Purpose:</h2>
 		     <p class="c0">
       <span class="c3">
