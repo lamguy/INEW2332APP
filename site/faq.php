@@ -5,8 +5,8 @@
           <h1>FAQ</h1>
           <p class=MsoNormal>FAQ's Page</p>
 
-<p class=MsoNormal>1. <span class=GramE>how</span> do I find my mac address in
-windows?</p>
+<p class=MsoNormal><strong>1. <span class=GramE>how</span> do I find my mac address in
+windows?</strong></p>
 
 <p class=MsoNormal><span style='mso-spacerun:yes'> </span>- While connected to
 the internet, <span class=GramE>Under</span> network and sharing center, click
