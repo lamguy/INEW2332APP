@@ -6,9 +6,9 @@ class Database
     /*
      * Edit the following variables
      */
-    private $db_host = '127.0.0.1';         // Database Host
+    private $db_host = 'localhost';         // Database Host
     private $db_user = 'root';           // Username
-    private $db_pass = 'root';     // Password
+    private $db_pass = '';     // Password
     private $db_name = 'inew2332_db';           // Database
     /*
      * End edit
@@ -137,6 +137,8 @@ class Database
         if($order != null)
             $q .= ' ORDER BY '.$order;
 
+        //$q="select * from devices where mac_address='0:f4:b9:17:38:69'";
+        //die($where);
         $query = mysqli_query($this->con, $q);
         if($query)
         {
@@ -144,6 +146,7 @@ class Database
             for($i = 0; $i < $this->numResults; $i++)
             {
                 $r = mysqli_fetch_array($query);
+                //die(var_dump($r));
                 $key = array_keys($r);
                 for($x = 0; $x < count($key); $x++)
                 {
@@ -185,8 +188,10 @@ class Database
 
             for($i = 0; $i < count($values); $i++)
             {
-                if(is_string($values[$i]))
+                if(!empty($values[$i]))
                     $values[$i] = '"'.$values[$i].'"';
+                else
+                    $values[$i] = 'NULL';
             }
             $values = implode(',',$values);
             $insert .= ' VALUES ('.$values.')';

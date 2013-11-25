@@ -1,3 +1,4 @@
+<?php include 'classes/functions.php'; ?>
 <?php include 'header.php'; ?>
 
       <div class="row">
@@ -11,7 +12,38 @@
       </div>
       <div class="row registration">
         <div class="col-lg-12">
-          <form class="form-horizontal" method="post" action="thankyou.html">
+          <?php 
+
+          if($_SERVER['REQUEST_METHOD']=="POST") {
+              $mac_address        = (isset($_POST['mac_address']) ? $_POST['mac_address'] : null);
+              $device_name        = (isset($_POST['device_name']) ? $_POST['device_name'] : '');
+              $os_system          = (isset($_POST['os_system']) ? $_POST['os_system'] : '');
+              $os_version         = (isset($_POST['os_version']) ? $_POST['os_version'] : '');
+              $device_type        = (isset($_POST['device_type']) ? $_POST['device_type'] : '');
+              
+              $device = new Device();
+              $device->add($device_name, $mac_address, $device_type, $os_system, $os_version);
+          } else {
+              $mac_address    = null;
+              $device_name    = null;
+              $os_system      = null;
+              $os_version     = null;
+              $device_type    = null;
+          }
+
+          ?>
+
+
+        <?php
+        
+        if (Flash::hasFlashes()) {
+            $flashes = Flash::getFlashes();
+            echo $flashes;
+        }
+        
+        ?>
+
+          <form class="form-horizontal" method="post" action="">
             <fieldset>
               <!-- Form Name -->
               <legend>Your Device Information</legend>
@@ -32,12 +64,22 @@
               </div>
               <!-- Multiple Radios (inline) -->
               <div class="form-group">
-                <label class="col-md-4 control-label" for="os_name">Operating System:</label>
+                <label class="col-md-4 control-label" for="device_type">Device Type:</label>
                 <div class="col-md-4">
-                  <label class="radio-inline" for="os_name-0">
-                    <input type="radio" name="os_name" id="os_name-0" value="android" checked="checked">Android</label>
-                  <label class="radio-inline" for="os_name-1">
-                    <input type="radio" name="os_name" id="os_name-1" value="ios">iOS</label>
+                  <label class="radio-inline" for="device_type-0">
+                    <input type="radio" name="device_type" id="device_type-0" value="laptop" checked="checked">Laptop</label>
+                  <label class="radio-inline" for="device_type-1">
+                    <input type="radio" name="device_type" id="device_type-1" value="mobile">Mobile</label>
+                </div>
+              </div>
+              <!-- Multiple Radios (inline) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="os_system">Operating System:</label>
+                <div class="col-md-4">
+                  <label class="radio-inline" for="os_system-0">
+                    <input type="radio" name="os_system" id="os_system-0" value="android" checked="checked">Android</label>
+                  <label class="radio-inline" for="os_system-1">
+                    <input type="radio" name="os_system" id="os_system-1" value="ios">iOS</label>
                 </div>
               </div>
               <!-- Text input-->

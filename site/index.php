@@ -1,3 +1,4 @@
+<?php include 'classes/functions.php'; ?>
 <?php include 'header.php'; ?>
 
       <div class="jumbotron">

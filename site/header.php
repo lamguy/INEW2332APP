@@ -1,5 +1,3 @@
-<?php include 'classes/functions.php'; ?>
-
 <!doctype html>
 
 <html>

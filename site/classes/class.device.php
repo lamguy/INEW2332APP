@@ -109,60 +109,77 @@ class Device
 	public $modify_date;
 	
 	
-	/**
-	* Getter for some private attributes
-	* @return mixed $attribute
-	*/
-	public function __get($attribute)
-	{
-		if (isset($this->{"_".$attribute}))
-		{
-			return $this->{"_".$attribute};
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function Device($device_id='', $user_id='', $mac_address='', $device_name='', $device_status='', $register_date='', $activate_date='', $deactivate_date='', $deregister_date='', $device_type='', $device_specify='', $os_system='', $os_version='', $create_date='', $modify_date='')
-	{
-		$this->device_id = $device_id;
-		$this->user_id = $user_id;
-		$this->mac_address = $mac_address;
-		$this->device_name = $device_name;
-		$this->device_status = $device_status;
-		$this->register_date = $register_date;
-		$this->activate_date = $activate_date;
-		$this->deactivate_date = $deactivate_date;
-		$this->deregister_date = $deregister_date;
-		$this->device_type = $device_type;
-		$this->device_specify = $device_specify;
-		$this->os_system = $os_system;
-		$this->os_version = $os_version;
-		$this->create_date = $create_date;
-		$this->modify_date = $modify_date;
-	}
+    public function __construct() {
+    }
 
-
-	
-	function Device($where='')
-	{
-		global $db;
-
-		
-			die("asmfklakfamk");
+    public function __destruct() {
+        //Not sure if it destroys the object completely
+        //It is still a controversy 
+        unset($this);
+    }
+    
+    public function __set($name, $value) 
+    {
+        if(property_exists($this, $name) && (strpos($name, "pri_") !== 0))
+            $this->{$name} = $value;
+    }
+    
+    public function __get($name) 
+    {
+        if(property_exists($this, $name) && (strpos($name, "pri_") !== 0))
+            return $this->{$name};
+    }
+    
+    public static function find($where)
+    {
+        global $db;
         
         if($db->select('devices', '*', $where)) {
-            foreach ($db->getResult() as $key => $value)
-            {
-                $this->{$key} = $value;
-            }
-        } else {
-            return false;
-        }
+        	if(sizeof($db->getResult()) == 0) {
+        		die(var_dump($db->getResult()));
+        		return false;
+        	} else {
+	        	$device = new Device();
+	            foreach ($db->getResult() as $key => $value)
+	            {
+	                $device->{$key} = $value;
+	            }
+	            return $device;
 
-		return $this;
-	}
+        	}
+        } else {
+            die(mysqli_error($db->con));
+        }
+    }
+    
+    public function add($device_name, $mac_address, $device_type, $os_name, $os_version)
+    {
+        global $db;
+
+        $current_date = date ("Y-m-d");
+
+
+        if($db->insert('devices', 
+        	array(
+        		0, 
+        		1, 
+        		$mac_address, 
+        		$device_name, 
+        		'Active', 
+        		$current_date, 
+        		NULL, 
+        		NULL, 
+        		NULL, 
+        		$device_type, 
+        		$os_name, 
+        		$os_version, 
+        		$current_date, 
+        		$current_date)))
+        {
+            echo Flash::addFlash('success','Device added sucessfully!');
+        } else {
+            echo mysqli_error($db->con);
+        }
+    }
 }
 ?>
