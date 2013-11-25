@@ -36,6 +36,12 @@
         padding-top: 19px;
         color: #777;
         border-top: 1px solid #e5e5e5;
+        text-align: center;
+      }
+
+      .footer ul {
+        width: 100%;
+        margin: 0 auto;
       }
       /* Customize container */
       @media(min-width: 768px) {
@@ -85,8 +91,6 @@
   <body>
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-        </ul>
         <img src="images/logo.png" alt="">
         <h3 class="text-muted">CIRCLE SQUARE</h3>
       </div>
