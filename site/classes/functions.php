@@ -10,9 +10,9 @@ $db->connect();
 require_once 'class.flash.php';
 require_once 'class.device.php';
 
-if (!is_valid_mac_address()) {
-	//header("Location: warning.php");
-}
+// if (!is_valid_mac_address()) {
+// 	//header("Location: warning.php");
+// }
 
 
 function is_valid_mac_address()

@@ -22,6 +22,7 @@
       /* Custom page header */
       .header {
         border-bottom: 1px solid #e5e5e5;
+        text-align: center;
       }
       /* Make the masthead heading the same height as the navigation */
       .header h3 {
@@ -85,16 +86,8 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
         </ul>
+        <img src="images/logo.png" alt="">
         <h3 class="text-muted">CIRCLE SQUARE</h3>
       </div>
       <!-- end header -->
