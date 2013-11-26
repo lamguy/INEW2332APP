@@ -10,7 +10,7 @@ $db->connect();
 require_once 'class.flash.php';
 require_once 'class.device.php';
 
-if (!is_valid_mac_address()) {
+if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF'] != 'register.php')) {
 	header("Location: warning.php");
 }
 
@@ -36,9 +36,9 @@ function get_mac_address() {
 
 	$ipAddress=$_SERVER["REMOTE_ADDR"];
 
-	exec('arp -n ' . $ipAddress, $user_mac);
+	exec('/usr/sbin/arp -n ' . $ipAddress, $user_mac);
 	
-	$mac_address_from_device = substr($user_mac[0],strpos($user_mac[0],':')-2, '17');
+	$mac_address_from_device = substr($user_mac[1],strpos($user_mac[1],':')-2, '17');
 
 	return trim($mac_address_from_device);
 

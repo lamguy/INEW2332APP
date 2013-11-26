@@ -7,8 +7,8 @@ class Database
      * Edit the following variables
      */
     private $db_host = 'localhost';         // Database Host
-    private $db_user = 'root';           // Username
-    private $db_pass = '';     // Password
+    private $db_user = 'inew2332_user';           // Username
+    private $db_pass = 'inew2332_pass';     // Password
     private $db_name = 'inew2332_db';           // Database
     /*
      * End edit

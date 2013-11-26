@@ -136,7 +136,7 @@ class Device
         
         if($db->select('devices', '*', $where)) {
         	if(sizeof($db->getResult()) == 0) {
-        		die(var_dump($db->getResult()));
+        		//die(var_dump($db->getResult()));
         		return false;
         	} else {
 	        	$device = new Device();

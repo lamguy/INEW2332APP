@@ -1,0 +1,6 @@
+# Logs #
+*.log
+
+
+# Project des files #
+sftp-config.json
