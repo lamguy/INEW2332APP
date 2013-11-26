@@ -10,7 +10,7 @@ $db->connect();
 require_once 'class.flash.php';
 require_once 'class.device.php';
 
-if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF'] != 'register.php')) {
+if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF']) != 'register.php') {
 	header("Location: warning.php");
 }
 
