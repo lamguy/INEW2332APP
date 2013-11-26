@@ -1,5 +1,12 @@
-<?php include 'classes/functions.php'; ?>
-<?php include 'header.php'; ?>
+<?php 
+
+include 'classes/functions.php';
+
+if (is_valid_mac_address()) {
+  header("Location: files.php");
+}
+
+include 'header.php'; ?>
 
       <div class="jumbotron">
         <h1>Files Management</h1>

@@ -1,4 +1,13 @@
-<?php include 'header.php'; ?>
+<?php 
+
+include 'header.php';
+
+if (is_valid_mac_address()) {
+  header("Location: files.php");
+  die();
+} 
+
+?>
 
       <div class="jumbotron">
         <h1>Your Device is Not Recognized</h1>
