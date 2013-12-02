@@ -2,7 +2,8 @@
         <div class="col-lg-12">
           <form class="col-lg-5 form-inline form-search pull-right" action="">
             <div class="form-group">
-              <input type="search" class="form-control" id="search" placeholder="Search for devices" name="search">
+              <?php $search_query = (!isset($_REQUEST["search"]) ? "" : $_REQUEST["search"]); ?>
+              <input type="search" class="form-control" id="search" placeholder="Search for devices" name="search" value="<?php echo $search_query; ?>">
               <input type="hidden" name="action" value="search">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>

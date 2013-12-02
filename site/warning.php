@@ -2,6 +2,10 @@
 
 require_once 'functions.php';
 
+if (is_valid_mac_address()) {
+  header("Location: files.php");
+}
+
 include 'header.php'; ?>
 
       <div class="jumbotron">
