@@ -22,13 +22,14 @@
               $device_type        = (isset($_POST['device_type']) ? $_POST['device_type'] : '');
               
               $device = new Device();
-              $device->add($device_name, $mac_address, $device_type, $os_system, $os_version);
+              $device->add($device_name, $mac_address, "Inactive", $device_type, $os_system, $os_version);
           } else {
-              $mac_address    = get_mac_address();
-              $device_name    = null;
-              $os_system      = null;
-              $os_version     = null;
-              $device_type    = null;
+              $mac_address      = get_mac_address();
+              $device_name      = null;
+              $device_status    = "Inactive";
+              $os_system        = null;
+              $os_version       = null;
+              $device_type      = null;
           }
 
           ?>

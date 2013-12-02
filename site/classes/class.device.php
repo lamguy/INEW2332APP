@@ -189,7 +189,7 @@ class Device
         return $devices;
     }
     
-    public function add($device_name, $mac_address, $device_type, $os_name, $os_version)
+    public function add($device_name, $mac_address, $device_status="Inactive", $device_type, $os_name, $os_version)
     {
         global $db;
 
@@ -202,7 +202,7 @@ class Device
         		1, 
         		$mac_address, 
         		$device_name, 
-        		'Active', 
+        		$device_status, 
         		$current_date, 
         		NULL, 
         		NULL, 
