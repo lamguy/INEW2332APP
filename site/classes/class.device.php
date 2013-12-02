@@ -163,31 +163,60 @@ class Device
 
         //die($user);
 
-        $query = "SELECT d.* 
+        if (isset($user)) {
+        	$query = "SELECT d.* 
                     FROM devices as d 
                     WHERE d.user_id = $user->user_id";
+        } else {
+        	$query = "SELECT d.* 
+                    FROM devices as d";
+        }
+
 
         $db->query($query);
 
         $devices = array();
 
-        if($db->getNumResults() == 1) {
+        foreach ($db->getResult() as $device)
+        {
             $fetched_device = new Device();
-            foreach ($db->getResult() as $key => $value)
-            {
+            foreach ($device as $key => $value) {
                 $fetched_device->{$key} = $value;
             }
             array_push($devices, $fetched_device);
+        }
 
-        } elseif ($db->getNumResults() > 1) {
-            foreach ($db->getResult() as $device)
-            {
-                $fetched_device = new Device();
-                foreach ($device as $key => $value) {
-                    $fetched_device->{$key} = $value;
-                }
-                array_push($devices, $fetched_device);
+        return $devices;
+    }
+
+    public static function search($query, $offset=false, $limit=false) {
+        global $db;
+
+        $query = "SELECT u.*, d.* 
+                    FROM users as u, devices as d 
+                    WHERE u.user_id = d.user_id 
+                    AND (d.device_name 	LIKE '%$query%' 
+                    OR  d.mac_address 	LIKE '%$query%' 
+                    OR  d.device_type 	LIKE '%$query%' 
+                    OR  d.os_system 	LIKE '%$query%' 
+                    OR  d.os_version 	LIKE '%$query%' 
+                    OR  u.employee_id 	LIKE '%$query%' 
+                    OR  u.first_name 	LIKE '%$query%' 
+                    OR  u.last_name 	LIKE '%$query%')";
+
+		//die($query);
+
+        $db->query($query);
+
+        $devices = array();
+
+        foreach ($db->getResult() as $device)
+        {
+            $fetched_device = new Device();
+            foreach ($device as $key => $value) {
+                $fetched_device->{$key} = $value;
             }
+            array_push($devices, $fetched_device);
         }
 
         return $devices;
