@@ -9,7 +9,7 @@ include 'header.php'; ?>
           <h1>Register your device</h1>
           <div class="alert alert-dismissable alert-info">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <b>Help!</b> If you are not registering using the device you wanted to register to the system, you have to enter MAC address of the device to the Mac address field.
+            <b>Help!</b> Enter different MAC address to register other device. By default, the system catch your current device's MAC address.
           </div>
         </div>
       </div>
