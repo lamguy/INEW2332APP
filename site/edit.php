@@ -1,8 +1,13 @@
-<?php include 'classes/functions.php'; ?>
 <?php 
 
+require_once 'functions.php';
+
   if (!empty($_REQUEST["device"])) {
+
     $device = Device::find("device_id=" . $_REQUEST['device']);
+
+    if(!is_your_own_device($device->device_id))
+      die("NO CHEATING!");
 
     $device_id        = $device->device_id;
     $device_name      = $device->device_name;

@@ -1,5 +1,5 @@
 <?php 
-require_once 'classes/functions.php';
+require_once 'functions.php';
 
 if($_SERVER["REQUEST_METHOD"] != "POST")
 	die("NO CHEATING");

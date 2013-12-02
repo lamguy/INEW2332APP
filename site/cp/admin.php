@@ -1,5 +1,5 @@
 <?php 
-require_once '../classes/functions.php';
+require_once '../functions.php';
 
 if (!is_admin()) {
   die("NO CHEATING");

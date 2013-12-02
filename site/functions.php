@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 require_once 'classes/class.database.php';
 
 $db = new Database();
@@ -12,6 +10,8 @@ require_once 'classes/class.user.php';
 require_once 'classes/class.device.php';
 
 
+session_start();
+
 function is_valid_mac_address()
 {
 	$valid = false;
@@ -21,13 +21,27 @@ function is_valid_mac_address()
 	$device = Device::find("mac_address='$mac_address_from_device'");
 	#3 Check if mac address from this device has a record in the dabase
 	if($device) {
-		$valid = true;
-		init();
+		if($device->device_status != "active") {
+			$valid = false;
+		} else {
+			$valid = true;
+			//if(!isset($_SESSION["user"]))
+				init();
+		}
 	} else {
 		$valid = false;
 	}
 
 	return $valid;
+}
+
+function is_your_own_device($device_id) {
+	$current_user = $_SESSION["user"];
+	//die(var_dump($current_user));
+	if($current_user->user_id != $device_id)
+		return false;
+	else
+		return true;
 }
 
 function get_mac_address() {

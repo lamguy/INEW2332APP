@@ -1,7 +1,8 @@
 <?php 
-include 'classes/functions.php';
-include 'header.php';
-?>
+
+require_once 'functions.php';
+
+include 'header.php'; ?>
 
       <div class="row">
         <div class="col-lg-12">

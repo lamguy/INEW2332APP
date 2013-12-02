@@ -1,8 +1,8 @@
 <?php 
 
-include 'header.php';
+require_once 'functions.php';
 
-?>
+include 'header.php'; ?>
 
       <div class="jumbotron">
         <h1>Your Device is Not Recognized</h1>
