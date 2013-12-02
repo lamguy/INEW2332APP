@@ -141,7 +141,7 @@ class Database
             $q .= ' ORDER BY '.$order;
 
         //$q="select * from devices where mac_address='0:f4:b9:17:38:69'";
-        //die($where);
+        //die($q);
         $query = mysqli_query($this->con, $q);
         if($query)
         {

@@ -228,6 +228,16 @@ class Device
 
         $current_date = date ("Y-m-d");
 
+        if(($device = Device::find("mac_address='$mac_address'"))) {
+
+        	if($device->device_status == "revoked")
+        		Flash::addFlash('danger','Device revoked, contact security team!');
+        	else
+            	Flash::addFlash('danger','Device already added!');
+
+            return false;
+        }
+
 
         if($db->insert('devices', 
         	array(
@@ -244,6 +254,8 @@ class Device
         		$os_name, 
         		$os_version, 
         		$current_date, 
+        		$current_date,
+        		"activate",
         		$current_date)))
         {
             echo Flash::addFlash('success','Device added sucessfully!');
