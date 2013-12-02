@@ -2,14 +2,14 @@
 
 session_start();
 
-require_once 'class.database.php';
+require_once 'classes/class.database.php';
 
 $db = new Database();
 $db->connect();
 
-require_once 'class.flash.php';
-require_once 'class.user.php';
-require_once 'class.device.php';
+require_once 'classes/class.flash.php';
+require_once 'classes/class.user.php';
+require_once 'classes/class.device.php';
 
 
 function is_valid_mac_address()

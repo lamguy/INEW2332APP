@@ -193,7 +193,7 @@ class Device
         return $devices;
     }
     
-    public function add($device_name, $mac_address, $device_status="Inactive", $device_type, $os_name, $os_version)
+    public function add($device_name, $mac_address, $device_status="inactive", $device_type, $os_name, $os_version)
     {
         global $db;
 
@@ -223,12 +223,12 @@ class Device
         }
     }
 
-    public function update($device_id, $device_name, $device_status="Inactive", $device_type, $os_system, $os_version) {
+    public function update($device_id, $mac_address=false, $device_name, $device_status="inactive", $device_type, $os_system, $os_version) {
         global $db;
 
         if(empty($device_name) || empty($device_type) || empty($os_system) || empty($os_version)) {
             $_SESSION['errors']['all'] = "All field are required!";
-            Flash::addFlash('alert', $_SESSION['error']['all']);
+            Flash::addFlash('danger', $_SESSION['errors']['all']);
             return false;
         }
 
@@ -242,6 +242,10 @@ class Device
             'os_version'         	  => $os_version,
             'modify_date'         	  => $now->format('Y-m-d H:i:s')
             );
+
+        if($mac_address && is_admin()) {
+        	$updating_device['mac_address'] = $mac_address;
+        }
 
         if($db->update('devices',$updating_device,"device_id=$device_id"))
         {

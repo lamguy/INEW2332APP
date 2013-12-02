@@ -1,7 +1,5 @@
 <?php 
 
-require_once '../classes/functions.php';
-
   if (!empty($_REQUEST["device"])) {
     $device = Device::find("device_id=" . $_REQUEST['device']);
 
@@ -18,11 +16,7 @@ require_once '../classes/functions.php';
 
       <div class="row">
         <div class="col-lg-12">
-          <h1>Edit your device</h1>
-          <div class="alert alert-dismissable alert-info">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <b>Help!</b> Our security policy does not allow users to change their devices's mac addresses. Please contact our security department if you have to change the mac address of your devices.
-          </div>
+          <h1>Edit device</h1>
         <?php
         
         if (Flash::hasFlashes()) {
@@ -39,12 +33,13 @@ require_once '../classes/functions.php';
 
           if($_SERVER['REQUEST_METHOD']=="POST") {
               $device_name        = (isset($_POST['device_name']) ? $_POST['device_name'] : '');
+              $device_status      = (isset($_POST['device_status']) ? $_POST['device_status'] : '');
               $mac_address        = (isset($_POST['mac_address']) ? $_POST['mac_address'] : '');
               $device_type        = (isset($_POST['device_type']) ? $_POST['device_type'] : '');
               $os_system          = (isset($_POST['os_system']) ? $_POST['os_system'] : '');
               $os_version         = (isset($_POST['os_version']) ? $_POST['os_version'] : '');
               
-              $device->update($device_id, $device_name, $device_status="Inactive", $device_type, $os_system, $os_version);
+              $device->update($device_id, $mac_address, $device_name, $device_status, $device_type, $os_system, $os_version);
           }
 
           ?>
@@ -62,7 +57,7 @@ require_once '../classes/functions.php';
           <form class="form-horizontal" method="post" action="">
             <fieldset>
               <!-- Form Name -->
-              <legend>Your Device Information</legend>
+              <legend>Device Information</legend>
               <!-- Text input-->
               <div class="form-group">
                 <label class="col-md-4 control-label" for="os_version">Device Status</label>
@@ -73,6 +68,13 @@ require_once '../classes/functions.php';
                     <input type="radio" name="device_status" id="device_status-1" value="inactive" <?php echo ($device_status == 'inactive' ? 'checked' : ''); ?>><span class="label label-warning">Inactive</span> </label> <br>
                   <label class="radio-inline" for="device_status-2">
                     <input type="radio" name="device_status" id="device_status-2" value="revoked"  <?php echo ($device_status == 'revoked' ? 'checked' : ''); ?>><span class="label label-danger">Revoked</span> </label>
+                </div>
+              </div>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="device_name">Device Name:</label>
+                <div class="col-md-5">
+                  <input id="device_name" name="device_name" type="text" placeholder="Your device name" class="form-control input-md" required value="<?php echo $device_name; ?>">
                 </div>
               </div>
               <!-- Text input-->

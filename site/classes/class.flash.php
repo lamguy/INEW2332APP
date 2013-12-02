@@ -30,9 +30,9 @@ final class Flash {
             throw new Exception('Cannot insert empty flash message.');
         }
         self::initFlashes();
-        $flashPanel = '<div data-alert class="alert-box ' .$flashType.'">';
+        $flashPanel = '<div class="alert alert-dismissable alert-' .$flashType.'">';
+        $flashPanel .= '<button type="button" class="close" data-dismiss="alert">&times;</button>';
         $flashPanel .= $message;
-        $flashPanel .= '<a href="#" class="close">&times;</a>';
         $flashPanel .= '</div>';
         self::$flashes = $flashPanel;
     }
