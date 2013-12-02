@@ -5,7 +5,7 @@ include 'header.php';
 
       <div class="row">
         <div class="col-lg-12">
-          <a class="btn pull-right btn-success" href="register.html">Regiser new device</a><h1>Your Devices</h1>
+          <a class="btn pull-right btn-success" href="register.php">Regiser new device</a><h1>Your Devices</h1>
 
           <?php if(is_valid_mac_address()) : ?>
 
@@ -44,10 +44,10 @@ include 'header.php';
                     <a class="btn btn-default" data-toggle="dropdown" href="#">Action</a><a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">                      <span class="caret"></span>                    </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#">Edit</a>
+                        <a href="edit.php?device=<?php echo $device->device_id; ?>">Edit</a>
                       </li>
                       <li>
-                        <a href="#">De-register</a>
+                        <a href="request.php?action=deregister&amp;device=<?php echo $device->device_id; ?>">De-register</a>
                       </li>
                     </ul>
                   </div>

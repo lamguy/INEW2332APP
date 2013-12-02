@@ -107,6 +107,10 @@ class Device
 	 * @var DATETIME
 	 */
 	public $modify_date;
+
+
+	public $latest_request;
+	public $request_date;
 	
 	
     public function __construct() {
@@ -215,8 +219,57 @@ class Device
         {
             echo Flash::addFlash('success','Device added sucessfully!');
         } else {
-            echo mysqli_error($db->con);
+            die(mysqli_error($db->con));
         }
+    }
+
+    public function update($device_id, $device_name, $device_status="Inactive", $device_type, $os_system, $os_version) {
+        global $db;
+
+        if(empty($device_name) || empty($device_type) || empty($os_system) || empty($os_version)) {
+            $_SESSION['errors']['all'] = "All field are required!";
+            Flash::addFlash('alert', $_SESSION['error']['all']);
+            return false;
+        }
+
+        $now = new DateTime();
+
+        $updating_device = array(
+            'device_name'             => $device_name,
+            'device_status'           => $device_status,
+            'device_type'         	  => $device_type,
+            'os_system'         	  => $os_system,
+            'os_version'         	  => $os_version,
+            'modify_date'         	  => $now->format('Y-m-d H:i:s')
+            );
+
+        if($db->update('devices',$updating_device,"device_id=$device_id"))
+        {
+            Flash::addFlash('success','Device updated sucessfully!');
+        } else {
+            die(mysqli_error($db->con));
+        }
+
+    }
+
+    public function request($device_id, $latest_request) {
+        global $db;
+
+        $now = new DateTime();
+
+        $request_device = array(
+            'latest_request'             => $latest_request,
+            'request_date'           	=> $now->format('Y-m-d H:i:s')
+            );
+
+        if($db->update('devices',$request_device,"device_id=$device_id"))
+        {
+            Flash::addFlash('success','Request sent!');
+			header("Location: edit.php?device=$device_id");
+        } else {
+            die(mysqli_error($db->con));
+        }
+
     }
 }
 ?>

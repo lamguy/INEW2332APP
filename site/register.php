@@ -96,7 +96,7 @@
               <div class="form-group">
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-8">
-                  <button id="submit" name="submit" class="btn btn-success">Register My Device</button>
+                  <button id="submit" name="submit" class="btn btn-primary">Register My Device</button>
                 </div>
               </div>
             </fieldset>
