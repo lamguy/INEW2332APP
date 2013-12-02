@@ -151,6 +151,43 @@ class Device
             die(mysqli_error($db->con));
         }
     }
+
+    public static function find_all($args=array(), $offset=false, $limit=false) {
+        global $db;
+
+        extract($args);
+
+        //die($user);
+
+        $query = "SELECT d.* 
+                    FROM devices as d 
+                    WHERE d.user_id = $user->user_id";
+
+        $db->query($query);
+
+        $devices = array();
+
+        if($db->getNumResults() == 1) {
+            $fetched_device = new Device();
+            foreach ($db->getResult() as $key => $value)
+            {
+                $fetched_device->{$key} = $value;
+            }
+            array_push($devices, $fetched_device);
+
+        } elseif ($db->getNumResults() > 1) {
+            foreach ($db->getResult() as $device)
+            {
+                $fetched_device = new Device();
+                foreach ($device as $key => $value) {
+                    $fetched_device->{$key} = $value;
+                }
+                array_push($devices, $fetched_device);
+            }
+        }
+
+        return $devices;
+    }
     
     public function add($device_name, $mac_address, $device_type, $os_name, $os_version)
     {

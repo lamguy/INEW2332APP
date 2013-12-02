@@ -90,7 +90,10 @@ class Database
         // You'll properly want to free the result set before commit another query
         $this->result = array();
 
+        //echo ($q);
+
         $query = mysqli_query($this->con, $q);
+
         if($query)
         {
             $this->numResults = mysqli_num_rows($query);
@@ -113,8 +116,8 @@ class Database
             return true;
         }
         else
-        {   print_r(@mysqli_error());
-            return false;
+        {   
+            die(mysqli_error($this->con));
         }
     }
 

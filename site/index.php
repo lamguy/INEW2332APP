@@ -2,7 +2,10 @@
 
 include 'classes/functions.php';
 
-if (is_valid_mac_address()) {
+
+if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF']) != 'register.php') {
+  header("Location: warning.php");
+} else {
   header("Location: files.php");
 }
 

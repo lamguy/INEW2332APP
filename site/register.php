@@ -24,7 +24,7 @@
               $device = new Device();
               $device->add($device_name, $mac_address, $device_type, $os_system, $os_version);
           } else {
-              $mac_address    = null;
+              $mac_address    = get_mac_address();
               $device_name    = null;
               $os_system      = null;
               $os_version     = null;
@@ -58,8 +58,8 @@
               <div class="form-group">
                 <label class="col-md-4 control-label" for="mac_address">MAC Address</label>
                 <div class="col-md-5">
-                  <input id="mac_address" name="mac_address" type="text" placeholder class="form-control input-md" required>
-                  <span class="help-block">To find your MAC address, click <a href="howto-macaddress.html">here</a></span> 
+                  <input id="mac_address" name="mac_address" type="text" placeholder class="form-control input-md" required value="<?php echo $mac_address; ?>">
+                  <span class="help-block">To find your MAC address, click <a href="faq.php">here</a></span> 
                 </div>
               </div>
               <!-- Multiple Radios (inline) -->
@@ -67,7 +67,7 @@
                 <label class="col-md-4 control-label" for="device_type">Device Type:</label>
                 <div class="col-md-4">
                   <label class="radio-inline" for="device_type-0">
-                    <input type="radio" name="device_type" id="device_type-0" value="laptop" checked="checked">Laptop</label>
+                    <input type="radio" name="device_type" id="device_type-0" value="laptop" checked="checked">Laptop</label> <br>
                   <label class="radio-inline" for="device_type-1">
                     <input type="radio" name="device_type" id="device_type-1" value="mobile">Mobile</label>
                 </div>
@@ -77,9 +77,11 @@
                 <label class="col-md-4 control-label" for="os_system">Operating System:</label>
                 <div class="col-md-4">
                   <label class="radio-inline" for="os_system-0">
-                    <input type="radio" name="os_system" id="os_system-0" value="android" checked="checked">Android</label>
+                    <input type="radio" name="os_system" id="os_system-0" value="android" checked="checked">Android</label> <br>
                   <label class="radio-inline" for="os_system-1">
-                    <input type="radio" name="os_system" id="os_system-1" value="ios">iOS</label>
+                    <input type="radio" name="os_system" id="os_system-1" value="ios">iOS</label> <br>
+                  <label class="radio-inline" for="os_system-2">
+                    <input type="radio" name="os_system" id="os_system-2" value="windows">Windows</label>
                 </div>
               </div>
               <!-- Text input-->
@@ -94,7 +96,6 @@
                 <label class="col-md-4 control-label" for="submit"></label>
                 <div class="col-md-8">
                   <button id="submit" name="submit" class="btn btn-success">Register My Device</button>
-                  <button id="reset" name="reset" class="btn btn-danger">Cancel</button>
                 </div>
               </div>
             </fieldset>

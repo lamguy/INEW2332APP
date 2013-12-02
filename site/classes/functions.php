@@ -8,11 +8,8 @@ $db = new Database();
 $db->connect();
 
 require_once 'class.flash.php';
+require_once 'class.user.php';
 require_once 'class.device.php';
-
-if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF']) != 'register.php') {
-	header("Location: warning.php");
-}
 
 
 function is_valid_mac_address()
@@ -25,6 +22,7 @@ function is_valid_mac_address()
 	#3 Check if mac address from this device has a record in the dabase
 	if($device) {
 		$valid = true;
+		init();
 	} else {
 		$valid = false;
 	}
@@ -42,6 +40,18 @@ function get_mac_address() {
 
 	return trim($mac_address_from_device);
 
+}
+
+function init() {
+	$user = User::find_by_device(get_mac_address());
+	//die($user->user_id);
+
+	$devices = Device::find_all(
+		array("user" => $user)
+		);
+
+	$_SESSION["user"] = $user;
+	$_SESSION["devices"] = $devices;
 }
 
 
