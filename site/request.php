@@ -9,11 +9,13 @@ $device_id = $_REQUEST["device_id"];
 $device = Device::find("device_id=$device_id");
 
 switch ($action) {
+
 	case 'activate':
+		$device->request($device_id, "activate");
 		break;
 
-	case 'deactivate':
-		$device->request($device_id, $action);
+	case 'revoke':
+		$device->request($device_id, "revoke");
 		break;
 	
 	default:

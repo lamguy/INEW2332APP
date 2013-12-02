@@ -67,7 +67,18 @@
               <div class="form-group">
                 <label class="col-md-4 control-label" for="device_name">Device Status:</label>
                 <div class="col-md-5">
-                  <?php $status = ($device->device_status == "Active" ? "success" : "warning");  ?>
+                  <?php switch ($device->device_status) {
+                    case 'active':
+                      $status = "success";
+                      break;
+                    case 'inactive':
+                      $status = "warning";
+                      break;
+                    
+                    default:
+                      $status = "danger";
+                      break;
+                  }  ?>
                   <span class="label label-<?php echo $status; ?>"><?php echo $device->device_status; ?></span>
                 </div>
               </div>
@@ -140,7 +151,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="activate">Request</label>
             <div class="col-md-8">
-              <button id="revoke" name="action" value="deactivate" <?php echo ($latest_request == 'revoke' ? 'disabled' : ''); ?> class="btn btn-danger">Revoke<?php echo ($latest_request == 'revoke' ? ' request sent!' : ''); ?></button>
+              <button id="revoked" name="action" value="revoke" <?php echo ($latest_request == 'revoke' ? 'disabled' : ''); ?> class="btn btn-danger">Revoke<?php echo ($latest_request == 'revoke' ? ' request sent!' : ''); ?></button>
               <input type="hidden" name="device_id" value="<?php echo $device_id; ?>">
             </div>
           </div>

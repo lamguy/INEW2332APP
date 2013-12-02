@@ -57,17 +57,7 @@
                   <span class="label label-<?php echo $status; ?>"><?php echo $device->device_status; ?></span>
                 </td>
                 <td>
-                  <div class="btn-group btn-group-xs">
-                    <a class="btn btn-default" data-toggle="dropdown" href="#">Action</a><a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">                      <span class="caret"></span>                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a href="edit.php?device=<?php echo $device->device_id; ?>">Edit</a>
-                      </li>
-                      <li>
-                        <a href="request.php?action=deregister&amp;device=<?php echo $device->device_id; ?>">De-register</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <a href="admin.php?action=edit&amp;device=<?php echo $device->device_id; ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</button>
                 </td>
               </tr>
               <?php 
