@@ -91,7 +91,7 @@
   <body>
     <div class="container">
       <div class="header">
-        <img src="images/logo.png" alt="">
+        <img src="<?php echo home_url("/") ?>images/logo.png" alt="">
         <h3 class="text-muted">CIRCLE SQUARE</h3>
       </div>
       <!-- end header -->
