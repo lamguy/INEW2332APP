@@ -151,7 +151,12 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="activate">Request</label>
             <div class="col-md-8">
+              <?php if($device_status == "active") : ?>
               <button id="revoked" name="action" value="revoke" <?php echo ($latest_request == 'revoke' ? 'disabled' : ''); ?> class="btn btn-danger">Revoke<?php echo ($latest_request == 'revoke' ? ' request sent!' : ''); ?></button>
+              <?php endif; ?>
+              <?php if($device_status == "revoked") : ?>
+              <button id="revoked" name="action" value="activate" <?php echo ($latest_request == 'activate' ? 'disabled' : ''); ?> class="btn btn-success">Activate<?php echo ($latest_request == 'activate' ? ' request sent!' : ''); ?></button>
+              <?php endif; ?>
               <input type="hidden" name="device_id" value="<?php echo $device_id; ?>">
             </div>
           </div>
