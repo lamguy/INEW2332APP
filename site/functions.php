@@ -12,6 +12,8 @@ require_once 'classes/class.device.php';
 
 session_start();
 
+//die(get_mac_address());
+
 function is_valid_mac_address()
 {
 	$valid = false;
@@ -20,12 +22,17 @@ function is_valid_mac_address()
 
 	$device = Device::find("mac_address='$mac_address_from_device'");
 	#3 Check if mac address from this device has a record in the dabase
+
+
+
+	//die(var_dump($device));
 	if($device) {
+
 		if($device->device_status != "active") {
 			$valid = false;
 		} else {
 			$valid = true;
-			//if(!isset($_SESSION["user"]))
+			if(!isset($_SESSION["user"]))
 				init();
 		}
 	} else {
@@ -70,7 +77,7 @@ function init() {
 
 function is_admin()
 {
-	if(get_mac_address() == "c8:2a:14:3f:90:12")
+	if(get_mac_address() == "c4:85:08:f3:85:22")
 		return true;
 	else
 		return false;
