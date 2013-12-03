@@ -27,7 +27,18 @@ function is_valid_mac_address()
 
 	//die(var_dump($device));
 	if($device) {
+<<<<<<< HEAD
 		$valid = true;
+=======
+
+		if($device->device_status != "active") {
+			$valid = false;
+		} else {
+			$valid = true;
+			if(!isset($_SESSION["user"]))
+				init();
+		}
+>>>>>>> 42b7585d85b10ee73d1541bb397dda91343ed1e1
 	} else {
 		$valid = false;
 	}
