@@ -2,7 +2,7 @@
 
 require_once 'functions.php';
 
-if (is_valid_mac_address()) {
+if (is_valid_mac_address() && is_activated()) {
   header("Location: files.php");
 }
 

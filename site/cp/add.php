@@ -15,7 +15,8 @@
         <div class="col-lg-12">
           <?php 
 
-          if($_SERVER['REQUEST_METHOD']=="POST") {
+          if($_SERVER['REQUEST_METHOD']=="POST") {              
+              $employee_id        = (isset($_POST['employee_id']) ? $_POST['employee_id'] : null);
               $mac_address        = (isset($_POST['mac_address']) ? $_POST['mac_address'] : null);
               $device_name        = (isset($_POST['device_name']) ? $_POST['device_name'] : '');
               $device_status      = (isset($_POST['device_status']) ? $_POST['device_status'] : '');
@@ -24,8 +25,9 @@
               $device_type        = (isset($_POST['device_type']) ? $_POST['device_type'] : '');
               
               $device = new Device();
-              $device->add($device_name, $mac_address, $device_status, $device_type, $os_system, $os_version);
+              $device->add($employee_id, $device_name, $mac_address, $device_status, $device_type, $os_system, $os_version);
           } else {
+              $employee_id      = "";
               $mac_address      = "";
               $device_name      = null;
               $device_status    = "inactive";
@@ -50,6 +52,13 @@
             <fieldset>
               <!-- Form Name -->
               <legend>Device Information</legend>
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="employee_id">Employee ID:</label>
+                <div class="col-md-5">
+                  <input id="employee_id" name="employee_id" type="text" placeholder="Your employee ID" class="form-control input-md" required value="<?php echo $employee_id; ?>">
+                </div>
+              </div>
               <!-- Text input-->
               <div class="form-group">
                 <label class="col-md-4 control-label" for="os_version">Device Status</label>

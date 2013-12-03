@@ -6,7 +6,7 @@ include 'header.php'; ?>
 
       <div class="row">
         <div class="col-lg-12">
-          <a class="btn pull-right btn-success" href="register.php">Regiser new device</a><h1>Your Devices</h1>
+          <a class="btn pull-right btn-success" href="register.php">Register new device</a><h1>Your Devices</h1>
 
           <?php if(is_valid_mac_address()) : ?>
 

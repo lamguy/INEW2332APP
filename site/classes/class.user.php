@@ -54,6 +54,23 @@ class User
         }
     }
 
+    public static function find_by_employee_id($employee_id) {
+        global $db;
+        
+        if($db->select('users', '*', "employee_id='$employee_id'")) {
+            $fetched_user = new User();
+            foreach ($db->getResult() as $key => $value) {
+                $fetched_user->{$key} = $value;
+            }
+
+            //die(var_dump($db->getResult()));
+
+            return $fetched_user;
+        } else {
+            return false;
+        }
+    }
+
     public static function find_by_device($mac_address)
     {
         global $db;

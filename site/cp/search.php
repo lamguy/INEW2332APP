@@ -10,9 +10,7 @@
           </form>
           <h1>Search Devices</h1>
 
-          <?php if(is_valid_mac_address()) : ?>
-
-          <?php 
+          <?php
 
             if(!empty($_REQUEST["search"])) {
               $search_query = $_REQUEST["search"];
@@ -66,10 +64,5 @@
               ?>
             </tbody>
           </table>
-          <?php else : ?>
-          <div class="alert alert-danger">
-            <p>You have not registered any device. Please follow our <a href="policy.php">security policy</a> to register one.</p>
-          </div>
-          <?php endif; ?>
         </div>
       </div>

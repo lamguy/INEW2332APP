@@ -277,6 +277,7 @@ class Database
                 }
             }
             $update .= ' WHERE '.$where;
+            //die($update);
             $query = mysqli_query($this->con, $update);
 
             if($query)

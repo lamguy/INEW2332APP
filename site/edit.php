@@ -6,8 +6,10 @@ require_once 'functions.php';
 
     $device = Device::find("device_id=" . $_REQUEST['device']);
 
-    if(!is_your_own_device($device->device_id))
-      die("NO CHEATING!");
+    //die(var_dump($device));
+
+    //if(!is_your_own_device($device))
+      //die("NO CHEATING!");
 
     $device_id        = $device->device_id;
     $device_name      = $device->device_name;
@@ -46,10 +48,11 @@ require_once 'functions.php';
           if($_SERVER['REQUEST_METHOD']=="POST") {
               $device_name        = (isset($_POST['device_name']) ? $_POST['device_name'] : '');
               $device_type        = (isset($_POST['device_type']) ? $_POST['device_type'] : '');
+              $device_status        = (isset($_POST['device_status']) ? $_POST['device_status'] : '');
               $os_system          = (isset($_POST['os_system']) ? $_POST['os_system'] : '');
               $os_version         = (isset($_POST['os_version']) ? $_POST['os_version'] : '');
               
-              $device->update($device_id, $device_name, $device_status="Inactive", $device_type, $os_system, $os_version);
+              $device->update($device_id, false, $device_name, false, $device_type, $os_system, $os_version);
           }
 
           ?>

@@ -2,8 +2,7 @@
 
 require_once 'functions.php';
 
-
-if (!is_valid_mac_address() && basename($_SERVER['PHP_SELF']) != 'register.php') {
+if (!is_valid_mac_address() || !is_activated()) {
   header("Location: warning.php");
 } else {
   header("Location: files.php");
